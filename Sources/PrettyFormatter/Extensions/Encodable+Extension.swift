@@ -1,6 +1,7 @@
 import Foundation
 
 extension Encodable {
+    /// A JSONEncoder instance with a custom configuration.
     private static var encoder: JSONEncoder {
         let encoder = JSONEncoder()
 
@@ -13,6 +14,13 @@ extension Encodable {
         return encoder
     }
 
+    /// Returns a prettified and formatted JSON string representation of the instance.
+    ///
+    /// This computed property encodes the current instance into JSON using the custom `JSONEncoder`,
+    /// then formats the resulting JSON data into a human-readable string.
+    /// If encoding fails, it returns the string `"nil"`.
+    ///
+    /// - Returns: A `String` containing the prettified JSON representation, or `"nil"` if encoding fails.
     public var prettyFormatted: String {
         guard
             let data = try? Self.encoder.encode(self)
