@@ -18,14 +18,14 @@ extension Encodable {
     ///
     /// This computed property encodes the current instance into JSON using the custom `JSONEncoder`,
     /// then formats the resulting JSON data into a human-readable string.
-    /// If encoding fails, it returns the string `"nil"`.
+    /// If encoding fails, it returns the error massage string.
     ///
-    /// - Returns: A `String` containing the prettified JSON representation, or `"nil"` if encoding fails.
+    /// - Returns: A `String` containing the prettified JSON representation, or error message if encoding fails.
     public var prettyFormatted: String {
         guard
             let data = try? Self.encoder.encode(self)
         else {
-            return "nil"
+            return PrettyFormatterError.failedToEncode.errorDescription
         }
 
         return data.prettyFormatted
