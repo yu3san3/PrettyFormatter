@@ -19,7 +19,7 @@ print(data.prettyFormatted)
 ```
 
 ### Formatting `Encodable` Objects
-You can also format objects conforming to the `Encodable` protocol:
+You can format objects conforming to the `Encodable` protocol:
 ```swift
 import PrettyFormatter
 
@@ -46,7 +46,7 @@ print(testUser.prettyFormatted)
 ```
 
 ### Formatting Other Objects
-Additionally, You can format any other valid object like this:
+You can format any other valid object like this:
 ```swift
 import PrettyFormatter
 
@@ -66,4 +66,18 @@ print(result)
 //   "age" : 30,
 //   "email" : "john@smith.com"
 // }
+```
+
+### Handling Optionals with `descriptionOrNil`
+The `descriptionOrNil` property lets you handle `Optional` values of types conforming to `CustomStringConvertible`.<br>
+It returns the `description` of the wrapped value or `"nil"` if the value is `nil`.
+
+```swift
+import PrettyFormatter
+
+let value: String? = "Hello!"
+print(value.descriptionOrNil) // Output: "Hello!"
+
+let emptyValue: String? = nil
+print(emptyValue.descriptionOrNil) // Output: "nil"
 ```
